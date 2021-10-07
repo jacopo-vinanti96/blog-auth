@@ -1,0 +1,30 @@
+<h2 *ngIf="editMode">Edit Post</h2>
+<h2 *ngIf="!editMode">New Post</h2>
+<form (ngSubmit)="onSubmit()" #postForm>
+    <mat-form-field appearance="fill">
+        <mat-label>Title</mat-label>
+        <input matInput placeholder="Insert title" [ngModel]="title" name="title" required>
+        <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+        <mat-label>Image</mat-label>
+        <input matInput placeholder="Insert image url" [ngModel]="img" name="img" required>
+        <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+        <mat-label>Content</mat-label>
+        <textarea matInput [ngModel]="content" name="content" required>
+        </textarea>
+        <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
+        <mat-hint>max 5000 characters</mat-hint>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+        <mat-label>Tag</mat-label>
+        <mat-select>
+            <mat-option value="economy">Economy</mat-option>
+        </mat-select>
+        <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
+    </mat-form-field>
+    <button mat-raised-button *ngIf="editMode" color="primary">Edit post</button>
+    <button mat-raised-button *ngIf="!editMode" color="primary">Create new post</button>
+</form>

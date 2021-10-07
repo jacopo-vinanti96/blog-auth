@@ -1,0 +1,29 @@
+@import '../partials/variables';
+
+nav {
+    mat-toolbar {
+        #logo {
+            font-size: 35px;
+        }
+        .nav__flex-wrapper {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            padding: 0 30px;
+            ul {
+                display: flex;
+                &.links {
+                    a {
+                        color: $color-w;
+                    }
+                }
+                .actions {
+                }
+                li:not(:last-child) {
+                    margin-right: 15px;
+                }
+            }
+        }
+    }
+}
+

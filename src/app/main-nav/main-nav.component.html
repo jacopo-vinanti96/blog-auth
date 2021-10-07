@@ -1,0 +1,32 @@
+<nav>
+    <mat-toolbar color="primary">
+        <span id="logo">
+            Spinblog
+        </span>
+        <div class="nav__flex-wrapper">
+            <ul class="links">
+                <li>
+                    <a href="#">
+                        Posts
+                    </a>
+                </li>
+                <li *ngIf="isAuth">
+                    <a href="#">
+                        Management
+                    </a>
+                </li>
+            </ul>
+            <ul class="actions">
+                <li>
+                    <button mat-raised-button>Login</button>
+                </li>
+                <li>
+                    <button mat-raised-button color="accent">Sign in</button>
+                </li>
+                <li>
+                    <button mat-raised-button>Logout</button>
+                </li>
+            </ul>
+        </div>
+    </mat-toolbar>
+</nav>
