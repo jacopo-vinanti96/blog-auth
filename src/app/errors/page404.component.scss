@@ -1,0 +1,12 @@
+.error_container {
+    text-align: center;
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 15px;
+    width: 50%;
+    margin: auto;
+    
+    @media screen and (max-width: 1024px) {
+        width: 100%;
+    }
+}

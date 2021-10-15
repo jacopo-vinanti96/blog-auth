@@ -1,0 +1,26 @@
+.account_container {
+    width: 80%;
+    margin: auto;
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 15px;
+
+    mat-card {
+        display: flex;
+        span {
+            text-align: center;
+            font-size: larger;
+            &:last-child {
+                width: 100%;
+            }
+        }
+    }
+
+    form {
+        
+        mat-form-field {
+            width: 100%;
+        }
+    }
+
+}

@@ -1,0 +1,28 @@
+<form (ngSubmit)="onSubmit(authForm)" #authForm="ngForm">
+    <mat-form-field appearance="fill">
+        <mat-label>Email</mat-label>
+        <input matInput placeholder="Insert email" #email="ngModel" ngModel
+        name="email" required email>
+        <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+        <mat-label>Password</mat-label>
+        <input matInput name="password" #password="ngModel" ngModel required minlength="8"
+        [type]="hide ? 'password' : 'text'" placeholder="Insert password">
+        <button mat-icon-button matSuffix 
+        (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide"
+        type="button">
+            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+        <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
+    </mat-form-field>
+    <span class="switch_mode" *ngIf="isLogin" (click)="isLogin = !isLogin">
+        <a>Swith to Sign in</a>
+    </span>
+    <span class="switch_mode" *ngIf="!isLogin" (click)="isLogin = !isLogin"> 
+        <a>Swith to Login</a>
+    </span>
+    <button mat-raised-button *ngIf="isLogin" color="primary">Login</button>
+    <button mat-raised-button *ngIf="!isLogin" color="primary">Sign in</button>
+</form>
+<app-res-msg *ngIf="error" [error]="error"></app-res-msg>

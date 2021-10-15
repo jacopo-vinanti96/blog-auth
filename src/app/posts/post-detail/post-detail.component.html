@@ -1,1 +1,15 @@
-<p>post-detail works!</p>
+<article *ngIf="post">
+    <h1>{{ post.title }}</h1>
+    <mat-chip-list aria-label="Fish selection">
+        <mat-chip color="primary" 
+        *ngFor="let tag of post.tags" selected>{{ tag }}</mat-chip>
+    </mat-chip-list>
+    <br>
+    <div class="d-flex">
+        <span>Author | <span class="bold">{{ post.email? post.email : 'Anonymous'}}</span></span>
+        <span>Date | <span class="bold">{{ date }}</span></span>
+    </div>
+    <img [src]="post.img" [alt]="post.title" class="hero">
+    <p>{{ post.content }}</p>
+</article>
+

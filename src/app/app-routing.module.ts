@@ -1,23 +1,18 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { ManagementEditComponent } from './management/management-edit/management-edit.component';
-import { ManagementComponent } from './management/management.component';
-import { PostDetailComponent } from './posts/post-detail/post-detail.component';
-import { PostsComponent } from './posts/posts.component'
+import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { Page404Component } from './errors/page404.component';
 
 const routes: Routes = [
   {path:'', redirectTo:'posts', pathMatch: 'full'},
-  {path:'posts', component: PostsComponent, children: [
-    {path: ':id', component: PostDetailComponent}
-  ]},
-  {path:'management', component: ManagementComponent, children: [
-    {path:'new', component: ManagementEditComponent},
-    {path:':id/edit', component: ManagementEditComponent}
-  ]}
+  {path:'posts', loadChildren: () => import('./posts/posts.module').then(m => m.PostsModule)},
+  {path:'management', loadChildren: () => import('./management/management.module').then(m => m.ManagementModule)},
+  {path:'auth', loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule)},
+  {path:'**', component: Page404Component},
+  /* {path:'account', component: AccountComponent, canActivate: [AuthGuardService]} */
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

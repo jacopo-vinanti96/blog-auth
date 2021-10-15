@@ -1,0 +1,17 @@
+<div class="account_container">
+    <h2>Account data</h2>
+    <mat-card>
+        <span>Email</span>
+        <span>{{ email }}</span>
+    </mat-card>
+    <br>
+    <form (ngSubmit)="onSubmitName(authForm)" #authForm="ngForm">
+        <mat-form-field appearance="fill">
+            <mat-label>Name</mat-label>
+            <input matInput placeholder="Insert name" ngModel
+            name="name" required>
+        </mat-form-field>
+        <button mat-raised-button color="primary">Set your name</button>
+    </form>
+
+</div>

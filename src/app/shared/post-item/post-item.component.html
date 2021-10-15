@@ -1,0 +1,10 @@
+<mat-card>
+    <img *ngIf="post.img" src="{{ post.img }}" mat-card-image>
+    <mat-chip color="primary" 
+    selected>{{ post.tags[0] }}</mat-chip>
+    <mat-card-title>	
+        {{ post.title }}
+    </mat-card-title>
+    <span *ngIf="!management">Author | <span class="bold">{{ post.email? post.email : 'Anonymous'}}</span></span>
+</mat-card>
+<br>

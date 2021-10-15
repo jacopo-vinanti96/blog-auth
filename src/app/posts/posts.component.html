@@ -1,6 +1,28 @@
-<div class="posts-list">
-    <app-post-item></app-post-item> 
+<div id="posts" class="d-flex">
+    <div class="posts-list" [class.active]="listActive">
+        <div class="search_wrapper">
+            <input type="text" class="search" #search (keydown.enter)="onSearch()">
+            <button aria-label="Search" class="btn-search" (click)="onSearch()"
+            mat-raised-button>
+                <mat-icon>search</mat-icon>
+            </button>
+        </div>
+        <div class="scroll-wrapper">
+            <h2 *ngIf="!posts.length">0 results</h2>
+            <app-post-item *ngFor="let post of posts" [post]="post"
+            [routerLink]="[post.id]" routerLinkActive="active" 
+            (click)="isMobile? listActive = false : undefined"></app-post-item> 
+        </div>
+    </div>
+    <div class="post-show">
+        <button *ngIf="isMobile" (click)="listActive = true" class="btn-posts">
+            <mat-icon>view_list</mat-icon>
+        </button>
+        <div class="scroll-wrapper" 
+        (click)="listActive && isMobile? listActive = false : undefined">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
 </div>
-<router-outlet></router-outlet>
 
 

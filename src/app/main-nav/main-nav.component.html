@@ -4,27 +4,63 @@
             Spinblog
         </span>
         <div class="nav__flex-wrapper">
-            <ul class="links">
+            <ul class="links" *ngIf="!isMobile">
                 <li>
-                    <a href="#">
-                        Posts
+                    <a routerLink="posts" routerLinkActive="active">
+                        Home
                     </a>
                 </li>
                 <li *ngIf="isAuth">
-                    <a href="#">
+                    <a routerLink="management" routerLinkActive="active">
                         Management
                     </a>
                 </li>
+                <!-- <li *ngIf="isAuth">
+                    <a routerLink="account" routerLinkActive="active">
+                        Account
+                    </a>
+                </li> -->
             </ul>
+            <button *ngIf="isMobile" mat-raised-button [matMenuTriggerFor]="menu">
+                <mat-icon>menu</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu">
+                <button mat-menu-item routerLink="posts" routerLinkActive="active"
+                class="btn-menu-item">Home</button>
+                <button mat-menu-item routerLink="management" routerLinkActive="active"
+                class="btn-menu-item">Management</button>
+            </mat-menu>
             <ul class="actions">
-                <li>
-                    <button mat-raised-button>Login</button>
+                <li *ngIf="!isAuth">
+                    <button mat-raised-button 
+                    [routerLink]="['/auth']" [queryParams]="{isLogin: true}">
+                    <mat-icon *ngIf="isMobile">input</mat-icon><span *ngIf="!isMobile">Login</span>
+                    </button>
                 </li>
-                <li>
-                    <button mat-raised-button color="accent">Sign in</button>
+                <li *ngIf="!isAuth">
+                    <button mat-raised-button color="accent"
+                    [routerLink]="['/auth']" [queryParams]="{isLogin: false}">
+                    <mat-icon *ngIf="isMobile">border_color</mat-icon><span *ngIf="!isMobile">Sign in</span>
+                    </button>
                 </li>
+                <li *ngIf="isAuth">
+                    <button mat-raised-button (click)="onLogout()">
+                        <mat-icon *ngIf="isMobile">launch</mat-icon><span *ngIf="!isMobile">Logout</span>
+                    </button>
+                </li>
+            </ul>
+        </div>
+        <div class="dropdown-menu" *ngIf="isMobile && open">
+            <ul>
                 <li>
-                    <button mat-raised-button>Logout</button>
+                    <a routerLink="posts" routerLinkActive="active">
+                        Home
+                    </a>
+                </li>
+                <li *ngIf="isAuth">
+                    <a routerLink="management" routerLinkActive="active">
+                        Management
+                    </a>
                 </li>
             </ul>
         </div>

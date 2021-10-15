@@ -1,8 +1,23 @@
-<div id="management">
-    <div class="posts-list">
-        <app-post-item></app-post-item>
+<div class="d-flex" id="management">
+    <div class="posts-list" [class.active]="listActive">
+        <button class="btn-new" routerLink="new" 
+        mat-raised-button color="accent">New Post</button>
+        <div class="scroll-wrapper">
+            <app-post-item *ngFor="let post of posts" [post]="post" [management]="true"
+            [routerLink]="[post.id, 'edit']" routerLinkActive="active"
+            (click)="isMobile? listActive = false : undefined"></app-post-item>
+            <h2 *ngIf="posts == []">You don't have any post</h2>
+        </div>
     </div>
-    <div id="edit">
-        <router-outlet></router-outlet>
+    <div class="post-show">
+        <button *ngIf="isMobile" (click)="listActive = true" class="btn-posts">
+            <mat-icon>view_list</mat-icon>
+        </button>
+        <div class="scroll-wrapper"
+        (click)="listActive && isMobile? listActive = false : undefined">
+            <router-outlet></router-outlet>
+        </div>
     </div>
+    <app-res-msg *ngIf="msg" [error]="msg.error? msg.msg : ''"
+    [success]="!msg.error? msg.msg : ''"></app-res-msg>
 </div>

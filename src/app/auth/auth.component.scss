@@ -1,0 +1,24 @@
+form {
+    width: 50%;
+    margin: auto;
+    text-align: right;
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 15px;
+
+    mat-form-field {
+        width: 100%;
+    }
+    .switch_mode {
+        margin-right: 30px;
+        a {
+            text-decoration: underline;
+            color: #3b78e7;
+            cursor: pointer;
+        }
+    }
+
+    @media screen and (max-width: 1024px) {
+        width: 100%;
+    }
+}

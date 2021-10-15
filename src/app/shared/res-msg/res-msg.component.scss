@@ -1,0 +1,26 @@
+.msg_container {
+    position: fixed;
+    padding: .75rem 1.25rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: .25rem;
+    bottom: 25px;
+    right: 25px;
+    opacity: 1;
+    animation-name: fadeOut;
+    animation-duration: 6.1s;
+    &.error {
+        background-color: #f8d7da;
+        color: #721c24;
+    }
+    &.success {
+        background-color: #d4edda;
+        color: #155724;
+    }
+}
+
+@keyframes fadeOut {
+    0%   {opacity: 1;}
+    60%  {opacity: 1;}
+    100% {opacity: 0;}
+}

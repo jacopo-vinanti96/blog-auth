@@ -1,0 +1,23 @@
+mat-card {
+  cursor: pointer;
+  text-align: center;
+  position: relative;
+
+  img {
+    max-height: 120px;
+    object-fit: cover;
+  }
+
+  mat-card-title {
+    overflow: hidden;
+    display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  }
+
+  mat-chip {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+}
